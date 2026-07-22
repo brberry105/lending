@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" class="overflow-x-hidden">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lending</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>tailwind.config = { darkMode: 'class' }</script>
+</head>
+
+<body class="bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300">
+
+    <header class="relative flex items-center justify-between h-12 bg-slate-100 dark:bg-slate-800 px-4 transition-colors">
+
+        <div class="font-bold">Logo</div>
+
+        <div class="flex items-center gap-4">
+
+            <nav class="hidden sm:flex gap-4">
+                <a class="hover:text-blue-500 dark:hover:text-blue-400">Home</a>
+                <a class="hover:text-blue-500 dark:hover:text-blue-400">About</a>
+                <a class="hover:text-blue-500 dark:hover:text-blue-400">Contact</a>
+            </nav>
+
+            <label class="cursor-pointer text-xl select-none">
+                <input id="themeToggle" type="checkbox" class="peer hidden">
+                <span class="hidden peer-checked:inline">☀️</span>
+                <span class="inline peer-checked:hidden">🌙</span>
+            </label>
+
+            <details class="sm:hidden [&::-webkit-details-marker]:hidden marker:hidden">
+                <summary class="cursor-pointer list-none text-xl">☰</summary>
+                <div class="absolute right-4 top-12 z-50 flex min-w-[140px] flex-col gap-2 
+                            rounded border border-slate-300 dark:border-slate-700 
+                            bg-white dark:bg-slate-800 p-4 shadow-lg">
+                    <a class="hover:text-blue-500 dark:hover:text-blue-400">Home</a>
+                    <a class="hover:text-blue-500 dark:hover:text-blue-400">About</a>
+                    <a class="hover:text-blue-500 dark:hover:text-blue-400">Contact</a>
+                </div>
+            </details>
+        </div>
+    </header>
+
+    <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 text-center p-6 gap-6 font-semibold text-lg">
+        <div class="bg-slate-100 dark:bg-slate-800 p-4 rounded-xl hover:scale-105 transition-all duration-300">one</div>
+        <div class="bg-slate-100 dark:bg-slate-800 p-4 rounded-xl hover:scale-105 transition-all duration-300">two</div>
+        <div class="bg-slate-100 dark:bg-slate-800 p-4 rounded-xl hover:scale-105 transition-all duration-300">three</div>
+        <div class="bg-slate-100 dark:bg-slate-800 p-4 rounded-xl hover:scale-105 transition-all duration-300">four</div>
+        <div class="bg-slate-100 dark:bg-slate-800 p-4 rounded-xl hover:scale-105 transition-all duration-300">five</div>
+        <div class="bg-slate-100 dark:bg-slate-800 p-4 rounded-xl hover:scale-105 transition-all duration-300">six</div>
+    </section>
+
+    <footer class="bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 
+                   text-center p-4 text-sm transition-colors">
+        © 2026 Landing
+    </footer>
+
+    <script>
+        const toggle = document.getElementById('themeToggle');
+        const html   = document.documentElement;
+
+        // Применить сохранённую тему при загрузке
+        const saved = localStorage.getItem('theme');
+        const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
+        if (saved === 'dark' || (!saved && prefersDark)) {
+            toggle.checked = true;
+            html.classList.add('dark');
+        }
+
+        // Переключение темы
+        toggle.addEventListener('change', () => {
+            html.classList.toggle('dark', toggle.checked);
+            localStorage.setItem('theme', toggle.checked ? 'dark' : 'light');
+        });
+    </script>
+
+</body>
+</html>
