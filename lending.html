@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" class="overflow-x-hidden">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lending</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="color-scheme" content="light dark">
 
-    <script>tailwind.config = { darkMode: 'class' }</script>
+    <title>Landing</title>
+
+    <link rel="stylesheet" href="./dist/output.css">
+
 </head>
 
 <body class="bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300">
@@ -56,24 +58,6 @@
         © 2026 Landing
     </footer>
 
-    <script>
-        const toggle = document.getElementById('themeToggle');
-        const html   = document.documentElement;
-
-        // Применить сохранённую тему при загрузке
-        const saved = localStorage.getItem('theme');
-        const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
-        if (saved === 'dark' || (!saved && prefersDark)) {
-            toggle.checked = true;
-            html.classList.add('dark');
-        }
-
-        // Переключение темы
-        toggle.addEventListener('change', () => {
-            html.classList.toggle('dark', toggle.checked);
-            localStorage.setItem('theme', toggle.checked ? 'dark' : 'light');
-        });
-    </script>
-
+    <script src="./src/script.js"></script>
 </body>
 </html>
